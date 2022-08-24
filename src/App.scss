@@ -1,3 +1,5 @@
+@import "~antd/dist/antd.css";
+
 * {
   margin: 0;
   font-family: Montserrat !important;
@@ -5,7 +7,9 @@
 
 .App{
   padding:0 110px;
-
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 }
 
 .App-header {
@@ -35,4 +39,13 @@
 .grey {
   background: #DFDEDE;
   border-radius: 5px; 
+}
+
+footer, header{
+  background-color: #285473;
+  padding: 0 110px;
+  color: white;
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 }
