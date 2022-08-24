@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  font-family: Montserrat !important;
+}
+
+.App{
+  padding:0 110px;
+
+}
+
+.App-header {
+  background-color:#285473;
+}
+
+.text {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.ant-anchor{
+  display: flex !important;
+  & div {
+    padding: 0 10px;
+  }
+}
+
+.possibilities {
+  color: #285473;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 138.5%;
+  text-transform: uppercase;
+}
+
+.grey {
+  background: #DFDEDE;
+  border-radius: 5px; 
+}

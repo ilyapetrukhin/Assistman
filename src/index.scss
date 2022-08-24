@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  font-family: Montserrat !important;
+}
+
+.d-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.mr-10 {
+  margin: 0 10px 0 10px;
+}
+
+.mr-r-10 {
+  margin-right: 10px;
+}
+
+.mr-l-10 {
+  margin-left: 10px;
+}
+
+.mr-t-10{
+  margin-top: 10px;
+}
+
+.p-10 {
+  padding: 10px;
+}
+
+.p-20 {
+  padding: 20px;
+}
+
+.w-100 {
+  width: 100%;
+}
