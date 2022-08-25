@@ -17,15 +17,28 @@ import set1 from "./images/set1.svg";
 import set2 from "./images/set2.svg";
 import set3 from "./images/set3.svg";
 import set4 from "./images/set4.svg";
+import ava1 from "./images/ava1.svg";
+import ava2 from "./images/ava2.svg";
+import ava3 from "./images/ava3.svg";
+
 import useWindowDimensions from "./useWindowDimensions";
 import { Settings } from "./components/Settings";
+import { Problems } from "./components/Problems";
+import Slider from "react-slick";
+import { Reviews } from "./components/Reviews";
 
 const { Link } = Anchor;
 
+const settings = {
+  // dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+};
+
 function App() {
   const { width } = useWindowDimensions();
-
-  console.log(width);
 
   return (
     <>
@@ -47,7 +60,7 @@ function App() {
         </div>
       </header>
       <main className="App">
-        <p className="text">
+        <p className="bold">
           ПЛАТФОРМА ДЛЯ УПРАВЛЕНИЯ И СТАНДАРТИЗАЦИИ ПРОЦЕССОВ ТЕХНИЧЕСКОГО
           ОБСЛУЖИВАНИЯ И МОНТАЖА СЛАБОТОЧНЫХ ИНЖЕНЕРНЫХ СИСТЕМ
         </p>
@@ -63,43 +76,53 @@ function App() {
           Любые отчётные формы. Автоматизация бизнес-процессов.
         </p>
         <Title text={"Какие проблемы решает ASSISTMAN?"} />
-        <Row gutter={[16, 16]}>
-          <Col xl={4} md={8} sm={12} xs={24}>
-            <div>
-              <img src={automat} />
-              <p>Автоматизация процессов</p>
-            </div>
-          </Col>
-          <Col xl={4} md={8} sm={12} xs={24}>
-            <div>
-              <img src={geoloc} />
-              <p>Геолокация сотрудников</p>
-            </div>
-          </Col>
-          <Col xl={4} md={8} sm={12} xs={24}>
-            <div>
-              <img src={photovideo} />
-              <p>Фото-видео фиксация</p>
-            </div>
-          </Col>
-          <Col xl={4} md={12} sm={12} xs={24}>
-            <div>
-              <img src={printforms} />
-              <p>Печатные формы</p>
-            </div>
-          </Col>
-          <Col xl={4} md={12} sm={12} xs={24}>
-            <div>
-              <img src={anlitics} />
-              <p>Аналитика</p>
-            </div>
-          </Col>
+        <Row gutter={[16, 16]} justify="center">
+          <Problems
+            xl={4}
+            md={8}
+            sm={12}
+            xs={24}
+            text={"Автоматизация процессов"}
+            src={automat}
+          />
+          <Problems
+            xl={4}
+            md={8}
+            sm={12}
+            xs={24}
+            text={"Геолокация сотрудников"}
+            src={geoloc}
+          />
+          <Problems
+            xl={4}
+            md={8}
+            sm={12}
+            xs={24}
+            text={"Фото-видео фиксация"}
+            src={photovideo}
+          />
+          <Problems
+            xl={4}
+            md={12}
+            sm={12}
+            xs={24}
+            text={"Печатные формы"}
+            src={printforms}
+          />
+          <Problems
+            xl={4}
+            md={12}
+            sm={12}
+            xs={24}
+            text={"Аналитика"}
+            src={anlitics}
+          />
         </Row>
 
         <Title text={"Возможности  ASSISTMAN"} />
         <div
           className={`${
-            width > 480 ? "d-flex-between grey p-10 mr-t-10" : "grey"
+            width > 560 ? "d-flex-between grey p-10 mr-t-10" : "grey"
           }`}
         >
           <div>
@@ -118,7 +141,7 @@ function App() {
         </div>
         <div
           className={`${
-            width > 480 ? "d-flex-between grey p-10 mr-t-10" : "grey"
+            width > 560 ? "d-flex-between grey p-10 mr-t-10" : "grey"
           }`}
         >
           <div>
@@ -136,7 +159,7 @@ function App() {
         </div>
         <div
           className={`${
-            width > 480 ? "d-flex-between grey p-10 mr-t-10" : "grey"
+            width > 560 ? "d-flex-between grey p-10 mr-t-10" : "grey"
           }`}
         >
           <div>
@@ -155,7 +178,7 @@ function App() {
         </div>
         <div
           className={`${
-            width > 480 ? "d-flex-between grey p-10 mr-t-10" : "grey"
+            width > 560 ? "d-flex-between grey p-10 mr-t-10" : "grey"
           }`}
         >
           <div>
@@ -173,7 +196,7 @@ function App() {
         </div>
         <div
           className={`${
-            width > 480 ? "d-flex-between grey p-10 mr-t-10" : "grey"
+            width > 560 ? "d-flex-between grey p-10 mr-t-10" : "grey"
           }`}
         >
           <div>
@@ -191,25 +214,25 @@ function App() {
         </div>
 
         <Title text={"ASSISTMAN легко настраивается "} />
-        <Row>
+        <Row justify="center" gutter={[16, 16]}>
           <Settings
             text={"Ежедневное резервное копирование"}
             title={"БЕЗОПАСНО"}
             src={set1}
           />
           <Settings
-            text={"Ежедневное резервное копирование"}
-            title={"БЕЗОПАСНО"}
+            text={"Уменьшает затраты связанные с человеческим фактором"}
+            title={"ВЫГОДНО"}
             src={set2}
           />
           <Settings
-            text={"Ежедневное резервное копирование"}
-            title={"БЕЗОПАСНО"}
+            text={"Доступно на любом мобильном устройстве"}
+            title={"МОБИЛЬНО"}
             src={set3}
           />
           <Settings
-            text={"Ежедневное резервное копирование"}
-            title={"БЕЗОПАСНО"}
+            text={"Удобный и простой интерфейс"}
+            title={"ПРОСТО"}
             src={set4}
           />
         </Row>
@@ -220,20 +243,59 @@ function App() {
             Тарифы расчитываются индивидуально, зависят от количества
             добавляемых объектов.
           </p>
-          <h2>ОТ 7 000 РУБ./МЕС.</h2>
+          <h2 className="sum">ОТ 7 000 РУБ./МЕС.</h2>
         </div>
         <ul>
           <li>Неограниченное количество пользователей.</li>
           <li> Весь доступный функционал. </li>
           <li>Неограниченное количество справочников, документов, отчетов. </li>
-          <li>
-            {" "}
-            Отдельно оплачивается дисковое пространство: 10 руб. за 1 ГБ.
-          </li>
+          <li>Отдельно оплачивается дисковое пространство: 10 руб. за 1 ГБ.</li>
         </ul>
-        <div>BlocksBlocksBlocksBlocksBlocksBlocksBlocks</div>
+
+        <Slider {...settings}>
+          <Reviews
+            title={"Екатерина КРАВЧЕКНОгЕН. ДИРЕКТОР АЛЬТАИР"}
+            text={`В ASSISTMAN мы ведем проекты уже несколько лет.
+            Благодаря этому продукту мы можем объединять разных специалистов для работы над одним проектом. ASSISMAN это 30% нашей эффективности.`}
+            src={ava2}
+          />
+          <Reviews
+            src={ava1}
+            title={`Сергей Шило
+              ДИРЕКТОР “Дозор"`}
+            text={`В результате использования ASSISMAN стало меньше хаоса, задачи перестали теряться, появилась возможность планирования ресурсов.`}
+          />
+          <Reviews
+            src={ava3}
+            title={`Екатерина КРАВЧЕКНО
+              гЕН. ДИРЕКТОР “АЛЬТАИР”`}
+            text={`В ASSISTMAN мы ведем проекты уже несколько лет.
+              Благодаря этому продукту мы можем объединять разных специалистов для работы над одним проектом. ASSISTMAN это 30% нашей эффективности.`}
+          />
+          <Reviews
+            title={"Екатерина КРАВЧЕКНОгЕН. ДИРЕКТОР АЛЬТАИР"}
+            text={`В ASSISTMAN мы ведем проекты уже несколько лет.
+            Благодаря этому продукту мы можем объединять разных специалистов для работы над одним проектом. ASSISMAN это 30% нашей эффективности.`}
+          />
+        </Slider>
 
         <Title text={"Узнайте о ASSISTMAN ОТ ПРОФЕССИОНАЛА"} />
+        <Row>
+          <Col span={24}>
+            <div className="d-flex-center">Заказать демонстрацию</div>
+          </Col>
+          <Col span={24}>
+            <div className="d-flex-around">
+              <div>Демонстрация займет не больше часа</div>
+              <div>Совершенно бесплатно</div>
+            </div>
+          </Col>
+          <Col span={24}>
+            <div className="d-flex-center">
+              Организуем удаленный доступ и проведем демострацию
+            </div>
+          </Col>
+        </Row>
       </main>
       <footer className="d-flex-between">
         <div>© ASSISTMAN, 2019</div>

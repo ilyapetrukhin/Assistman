@@ -1,4 +1,6 @@
 @import "~antd/dist/antd.css";
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
 
 * {
   margin: 0;
@@ -16,9 +18,30 @@
   background-color:#285473;
 }
 
+.bold {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 140.9%;
+  text-align: center;
+  margin: 20px 0 0 0;
+}
 .text {
   text-align: center;
   margin: 10px 0;
+}
+
+.sum {
+  font-weight: 700;
+font-size: 50px;
+line-height: 135.9%;
+/* or 68px */
+
+text-align: center;
+text-transform: lowercase;
+
+color: #285473;
+
+text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .ant-anchor{

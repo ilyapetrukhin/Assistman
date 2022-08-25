@@ -1,0 +1,15 @@
+.reviews {
+    background: #FFFFFF;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    &__block{
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.x {
+    width: 60px !important;
+    height: 60px !important;
+}
