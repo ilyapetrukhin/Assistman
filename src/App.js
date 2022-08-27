@@ -1,4 +1,4 @@
-import { Anchor, Button, Col, Row } from "antd";
+import { Button, Col, Row, Modal, Form, Input } from "antd";
 import "./App.scss";
 import { Title } from "./components/Title";
 import asistman from "./images/asistman.png";
@@ -20,14 +20,16 @@ import set4 from "./images/set4.svg";
 import ava1 from "./images/ava1.svg";
 import ava2 from "./images/ava2.svg";
 import ava3 from "./images/ava3.svg";
+import clock from "./images/clock.svg";
+import free from "./images/free.svg";
+import skype from "./images/skype.svg";
 
 import useWindowDimensions from "./useWindowDimensions";
 import { Settings } from "./components/Settings";
 import { Problems } from "./components/Problems";
 import Slider from "react-slick";
 import { Reviews } from "./components/Reviews";
-
-const { Link } = Anchor;
+import { useEffect, useState } from "react";
 
 const settings = {
   // dots: true,
@@ -40,26 +42,98 @@ const settings = {
 function App() {
   const { width } = useWindowDimensions();
 
+  const [myref, setMyref] = useState(1);
+
+  useEffect(() => {
+    document.getElementById(myref).scrollIntoView();
+  }, [myref, setMyref]);
+
+  const executeScroll = (id) => {
+    setMyref(id);
+  };
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+
   return (
     <>
       <header className="App-header d-flex-between">
         <div>
           <img src={asistman} style={{ height: "90px", width: "200px" }} />
         </div>
-        <div>
-          <div>
-            <Anchor className="d-flex">
-              <Link href="#components-anchor-demo-basic" title="Главная" />
-              <Link href="#components-anchor-demo-static" title="Возможности" />
-              <Link href="#API" title="Стоимость"></Link>
-            </Anchor>
+        <div className="d-flex-center">
+          <div className="navhead">
+            <p onClick={() => executeScroll(1)}>Главная</p>
+            <p onClick={() => executeScroll(2)}>Возможности</p>
+            <p onClick={() => executeScroll(3)}>Стоимость</p>
           </div>
-          <div>
-            <Button>Бесплатная демонстрация</Button>
+          <div className="navhead__btn">
+            <button onClick={showModal}>Бесплатная демонстрация</button>
           </div>
+          <Modal
+            title="ЗАПИСАТЬСЯ НА ДЕМОНСТРАЦИЮ"
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+          >
+            <p>
+              Введите свое имя и номер телефона или e-mail, мы свяжемся с вами
+              для согласования времени и даты демонстрации сервиса.
+            </p>
+            <Form onFinish={(fields) => console.log(fields)}>
+              <Form.Item
+                name="username"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input placeholder="Имя" />
+              </Form.Item>
+              <Form.Item
+                name="phone"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input placeholder="+7___-___-__-__" />
+              </Form.Item>
+              <Form.Item
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
+                  },
+                ]}
+              >
+                <Input placeholder="e-mail" />
+              </Form.Item>
+
+              <Button type="primary" htmlType="submit">
+                ЗАПИСЬ
+              </Button>
+            </Form>
+          </Modal>
         </div>
       </header>
       <main className="App">
+        <div id={1} />
         <p className="bold">
           ПЛАТФОРМА ДЛЯ УПРАВЛЕНИЯ И СТАНДАРТИЗАЦИИ ПРОЦЕССОВ ТЕХНИЧЕСКОГО
           ОБСЛУЖИВАНИЯ И МОНТАЖА СЛАБОТОЧНЫХ ИНЖЕНЕРНЫХ СИСТЕМ
@@ -121,6 +195,7 @@ function App() {
 
         <Title text={"Возможности  ASSISTMAN"} />
         <div
+          id={2}
           className={`${
             width > 560 ? "d-flex-between grey p-10 mr-t-10" : "grey"
           }`}
@@ -238,6 +313,7 @@ function App() {
         </Row>
 
         <Title text={"Стоймость ASSISTMAN:"} />
+        <div id={3} />
         <div>
           <p className="text">
             Тарифы расчитываются индивидуально, зависят от количества
@@ -282,21 +358,39 @@ function App() {
         <Title text={"Узнайте о ASSISTMAN ОТ ПРОФЕССИОНАЛА"} />
         <Row>
           <Col span={24}>
-            <div className="d-flex-center">Заказать демонстрацию</div>
+            <div className="d-flex-center">
+              <Button type="primary" onClick={showModal}>
+                Заказать демонстрацию
+              </Button>
+            </div>
           </Col>
           <Col span={24}>
             <div className="d-flex-around">
-              <div>Демонстрация займет не больше часа</div>
-              <div>Совершенно бесплатно</div>
+              <div>
+                <div>
+                  <img src={clock} />
+                </div>
+                <div>Демонстрация займет не больше часа</div>
+              </div>
+              <div>
+                <div>
+                  <img src={free} />
+                </div>
+                Совершенно бесплатно
+              </div>
             </div>
           </Col>
           <Col span={24}>
             <div className="d-flex-center">
+              <div>
+                <img src={skype} />
+              </div>
               Организуем удаленный доступ и проведем демострацию
             </div>
           </Col>
         </Row>
       </main>
+
       <footer className="d-flex-between">
         <div>© ASSISTMAN, 2019</div>
         <div>Политика конфиденциальности</div>

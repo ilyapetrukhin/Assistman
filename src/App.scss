@@ -4,8 +4,9 @@
 
 * {
   margin: 0;
-  font-family: Montserrat !important;
+  // font-family: "Montserrat" !important;
 }
+
 
 .App{
   padding:0 110px;
@@ -18,8 +19,28 @@
   background-color:#285473;
 }
 
+.navhead {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    padding-right: 10px;
+    cursor: pointer;
+  }
+  &__btn {
+    button {
+      background-color:  #F8C451;
+      color: black;
+      box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+  }
+}
+
 .bold {
-  font-weight: 700;
+  font-weight: bold;
   font-size: 22px;
   line-height: 140.9%;
   text-align: center;
