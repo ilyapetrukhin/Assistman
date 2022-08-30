@@ -49,24 +49,6 @@ function App() {
     document.getElementById(myref).scrollIntoView();
   }, [myref, setMyref]);
 
-  // useEffect(() => {
-  //   try {
-  //     const response = fetch(
-  //       "https://telegram.assistman.ru/api/site_endpoint",
-  //       {
-  //         method: "POST",
-  //         body: JSON.stringify({ username: "user" }),
-  //         Authorization: "Bearer RM9uH7hP1UUkSVolIltoBFRtHDTSZKeTBYOd3Nkq",
-  //         "Content-Type": "application/json",
-  //       }
-  //     );
-  //     const json = response.json();
-  //     console.log("Успех:", JSON.stringify(json));
-  //   } catch (error) {
-  //     console.error("Ошибка:", error);
-  //   }
-  // }, []);
-
   const executeScroll = (id) => {
     setMyref(id);
   };
@@ -112,13 +94,19 @@ function App() {
         <div>
           <img src={asistman} style={{ height: "90px", width: "200px" }} />
         </div>
-        <div className="d-flex-center">
-          <div className="navhead">
-            <p onClick={() => executeScroll(1)}>Главная</p>
-            <p onClick={() => executeScroll(2)}>Возможности</p>
-            <p onClick={() => executeScroll(3)}>Стоимость</p>
+        <div className={`${width > 560 ? "d-flex-center" : ""}`}>
+          <div className="navhead mr-t-10">
+            <div>
+              <p onClick={() => executeScroll(1)}>Главная</p>
+            </div>
+            <div>
+              <p onClick={() => executeScroll(2)}>Возможности</p>
+            </div>
+            <div>
+              <p onClick={() => executeScroll(3)}>Стоимость</p>
+            </div>
           </div>
-          <div className="navhead__btn">
+          <div className={`${width > 560 ? "navhead__btn" : "none"}`}>
             <button onClick={showModal}>Бесплатная демонстрация</button>
           </div>
           <Modal
@@ -432,7 +420,7 @@ function App() {
         </Row>
       </main>
 
-      <footer className="d-flex-between">
+      <footer className="d-flex-between mr-t-10">
         <div>© ASSISTMAN, 2019</div>
         <div>Политика конфиденциальности</div>
         <div>

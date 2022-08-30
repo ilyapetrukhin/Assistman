@@ -32,13 +32,17 @@
       background-color:  #F8C451;
       color: black;
       box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 5px;
+      border-radius: 15px;
       padding: 5px;
+      cursor: pointer;
     }
 
   }
 }
 
+.none {
+  display: none;
+}
 .bold {
   font-weight: bold;
   font-size: 22px;
