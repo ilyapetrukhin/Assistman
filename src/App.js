@@ -30,6 +30,7 @@ import { Problems } from "./components/Problems";
 import Slider from "react-slick";
 import { Reviews } from "./components/Reviews";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const settings = {
   // dots: true,
@@ -48,6 +49,24 @@ function App() {
     document.getElementById(myref).scrollIntoView();
   }, [myref, setMyref]);
 
+  // useEffect(() => {
+  //   try {
+  //     const response = fetch(
+  //       "https://telegram.assistman.ru/api/site_endpoint",
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify({ username: "user" }),
+  //         Authorization: "Bearer RM9uH7hP1UUkSVolIltoBFRtHDTSZKeTBYOd3Nkq",
+  //         "Content-Type": "application/json",
+  //       }
+  //     );
+  //     const json = response.json();
+  //     console.log("Успех:", JSON.stringify(json));
+  //   } catch (error) {
+  //     console.error("Ошибка:", error);
+  //   }
+  // }, []);
+
   const executeScroll = (id) => {
     setMyref(id);
   };
@@ -65,6 +84,28 @@ function App() {
     setIsModalVisible(false);
   };
 
+  const onSubmit = (fields) => {
+    const headers = {
+      Authorization: "Bearer RM9uH7hP1UUkSVolIltoBFRtHDTSZKeTBYOd3Nkq",
+      "Content-Type": "application/json",
+    };
+    axios
+      .post(
+        "https://telegram.assistman.ru/api/site_endpoint",
+        {
+          username: fields.username,
+          phone: fields.phone,
+          email: fields.email,
+        },
+        { headers: headers }
+      )
+      .then((res) => {
+        console.log("RESPONSE RECEIVED: ", res);
+      })
+      .catch((err) => {
+        console.log("AXIOS ERROR: ", err);
+      });
+  };
   return (
     <>
       <header className="App-header d-flex-between">
@@ -90,7 +131,7 @@ function App() {
               Введите свое имя и номер телефона или e-mail, мы свяжемся с вами
               для согласования времени и даты демонстрации сервиса.
             </p>
-            <Form onFinish={(fields) => console.log(fields)}>
+            <Form onFinish={onSubmit}>
               <Form.Item
                 name="username"
                 rules={[
